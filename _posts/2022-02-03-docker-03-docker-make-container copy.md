@@ -14,7 +14,7 @@ Docker의 기본적인 기능을 아라보자.
 
 ## 실행 환경
 - WSL2 ubuntu LTS 20.04
-- Docker 20.10.12
+- Docker 20.10.12 
 
 ![image](https://user-images.githubusercontent.com/51642448/152668784-9f8103f9-6d13-467b-9b6d-9891fa332fae.png)
 

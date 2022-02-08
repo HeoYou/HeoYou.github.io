@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-06T22:07:42+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[Docker] 설치부터 사용까지!_03(기초 - container 활용하기)</title><link href="http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container.html" rel="alternate" type="text/html" title="[Docker] 설치부터 사용까지!_03(기초 - container 활용하기)" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-08T22:45:14+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[GOLANG] GO 설치부터 사용까지_01(설치부터 환경변수 설정까지) !</title><link href="http://localhost:4000/go/2022/02/05/go-01-go-install.html" rel="alternate" type="text/html" title="[GOLANG] GO 설치부터 사용까지_01(설치부터 환경변수 설정까지) !" /><published>2022-02-05T00:00:00+09:00</published><updated>2022-02-05T00:00:00+09:00</updated><id>http://localhost:4000/go/2022/02/05/go-01-go-install</id><content type="html" xml:base="http://localhost:4000/go/2022/02/05/go-01-go-install.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;GO를 다뤄보자!&lt;/p&gt;
+
+&lt;h2 id=&quot;설치-환경&quot;&gt;설치 환경&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;windows10&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;설치&quot;&gt;설치&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-go-홈페이지에-들어가자-홈페이지로&quot;&gt;1. go 홈페이지에 들어가자! &lt;a href=&quot;https://go.dev/&quot;&gt;[홈페이지로]&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152995306-c1adb877-c07f-42c3-90ae-fa15779cd68c.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다운로드가 대문짝만하게 보입니다. 다운로드 클릭&lt;/p&gt;
+
+&lt;h3 id=&quot;2-자신이-원하는-버전-또는-os버전을-골라-다운로드-합니다&quot;&gt;2. 자신이 원하는 버전 또는 os버전을 골라 다운로드 합니다.&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152995899-87ea16c2-fa2a-4437-afe7-29bb58ea45f9.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;저는 개인적으로 설치형태보다는 압축형태로 다운로드해서 사용하는걸 좋아합니다. 
+&lt;br /&gt;
+그래서 zip파일인 아래에서 두번째 파일을 다운로드 하겠습니다. 
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152996602-bc5a8244-04f0-486d-bd80-c6edea119c07.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원하는 경로에 다운로드 후 압축을 풀어줍니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-환경설정&quot;&gt;3. 환경설정&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152997711-e32dad5a-7e90-41f9-aabb-61008e9cc2fa.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;내 PC -&amp;gt; 속성 -&amp;gt; 고급 시스템 설정 -&amp;gt; 고급 탭 -&amp;gt; 환경 변수 들어가면 위와같은 화면이 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152998113-a354ef57-fdd8-490e-940e-232e16111aa6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;시스템 변수 -&amp;gt; 새로 만들기 클릭
+&lt;br /&gt;
+변수이름에 ‘GOROOT’적고 변수 값에 본인이 다운로드한 go의 경로를 입력합니다.(압축을 풀어준 상태)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;—한번 더—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152998615-8bf10a2a-846f-4bf1-bd7f-ccad1598180d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;시스템 변수 -&amp;gt; 새로 만들기 클릭
+&lt;br /&gt;
+변수이름에 ‘GOPATH’적고 변수 값에 본인이 설정한 GOPATH의 경로를 입력합니다.(GOPATH는 제가 원하는 경로로 따로 만들어 두었습니다.)&lt;/p&gt;
+
+&lt;h3 id=&quot;4-설치-확인&quot;&gt;4. 설치 확인&lt;/h3&gt;
+
+&lt;p&gt;커멘드 창에 들어갑니다. 다음 명령어를 입력합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;go version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152998944-4fcfc6fb-6c34-4c18-bd9a-ac3ab45d75cd.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;버전이 나오는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;go env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;위 명령어 입력 시 수정한 GOPATH도 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152999363-2d54e57d-1b2e-416a-8a9d-c358e4f2f0de.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="go" /><category term="install" /><category term="windows10" /><summary type="html">Intro GO를 다뤄보자!</summary></entry><entry><title type="html">[docker-compose] 설치부터 사용까지_01(설치)</title><link href="http://localhost:4000/docker/2022/02/04/docker-compose-01-docker-compose-install.html" rel="alternate" type="text/html" title="[docker-compose] 설치부터 사용까지_01(설치)" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/04/docker-compose-01-docker-compose-install</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/04/docker-compose-01-docker-compose-install.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Docker compose는 복잡한 명령어를 편리하게 관리하도록 도와준다. 
+&lt;br /&gt;
+그래서 설치해 보았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;설치-환경&quot;&gt;설치 환경&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;WSL2 ubuntu LTS 20.04&lt;/li&gt;
+  &lt;li&gt;Docker 20.10.12 &lt;a href=&quot;https://heoyou.github.io/docker/2022/02/02/docker-01-docker-install.html&quot;&gt;[설치하러 가기]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;docker-compose-설치하기&quot;&gt;Docker compose 설치하기&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-다운로드&quot;&gt;1. 다운로드&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;uname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;uname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;도커 컴포즈 설치(버전 수정이 가능하다)&lt;a href=&quot;https://github.com/docker/compose/releases&quot;&gt;[버전 확인하러 가기]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-실행-권한-적용&quot;&gt;2. 실행 권한 적용&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-심볼릭-링크-설정&quot;&gt;3. 심볼릭 링크 설정&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /usr/local/bin/docker-compose /usr/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-설치-확인&quot;&gt;4. 설치 확인&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker-compose &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152796338-af762243-7e5a-4b2d-8a52-d09de2f6a8c0.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="Docker" /><category term="container" /><category term="docker-compose" /><summary type="html">Intro Docker compose는 복잡한 명령어를 편리하게 관리하도록 도와준다. 그래서 설치해 보았다.</summary></entry><entry><title type="html">[Docker] 설치부터 사용까지!_03(기초 - container 활용하기)</title><link href="http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container-copy.html" rel="alternate" type="text/html" title="[Docker] 설치부터 사용까지!_03(기초 - container 활용하기)" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container%20copy</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container-copy.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Docker의 기본적인 기능을 아라보자.&lt;/p&gt;
 
 &lt;h2 id=&quot;실행-환경&quot;&gt;실행 환경&lt;/h2&gt;
@@ -228,7 +323,52 @@ or
 
 &lt;p&gt;rm 명령어를 이용합니다. -f옵션을 넣어주면 실행중인 컨테이너도 삭제가 가능합니다
 &lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152676374-d612900a-cfee-47b4-8fdf-f43973e91e5a.png&quot; alt=&quot;image&quot; /&gt;
-실행중인 컨테이너를 삭제하려고 하였으나 삭제가 안되어 -f 옵션을 넣어 삭제 했습니다.&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="Docker" /><category term="container" /><summary type="html">Intro Docker의 기본적인 기능을 아라보자.</summary></entry><entry><title type="html">[Docker] 설치부터 사용까지!_02(기초 - 이미지 받기)</title><link href="http://localhost:4000/docker/2022/02/02/docker-02-docker-image-download.html" rel="alternate" type="text/html" title="[Docker] 설치부터 사용까지!_02(기초 - 이미지 받기)" /><published>2022-02-02T00:00:00+09:00</published><updated>2022-02-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/02/docker-02-docker-image-download</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/02/docker-02-docker-image-download.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+실행중인 컨테이너를 삭제하려고 하였으나 삭제가 안되어 -f 옵션을 넣어 삭제 했습니다.&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="Docker" /><category term="container" /><summary type="html">Intro Docker의 기본적인 기능을 아라보자.</summary></entry><entry><title type="html">[Docker] 설치부터 사용까지!_01(설치)</title><link href="http://localhost:4000/docker/2022/02/02/docker-01-docker-install.html" rel="alternate" type="text/html" title="[Docker] 설치부터 사용까지!_01(설치)" /><published>2022-02-02T00:00:00+09:00</published><updated>2022-02-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/02/docker-01-docker-install</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/02/docker-01-docker-install.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;처음 접해본 Docker는 신세계였다. 그래서 정리하였다.&lt;/p&gt;
+
+&lt;h2 id=&quot;설치-환경&quot;&gt;설치 환경&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;WSL2 ubunt LTS 20.04&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;설치&quot;&gt;설치&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;기존 도커를 삭제하자
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get remove docker docker-engine docker.io containerd runc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;다운로드를 위한 package 설치 해주자
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; - y 
+  apt-transport-https &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  ca-certificates &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  curl &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  gnupg &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  software-properties-common
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Official GPG Key등록
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://download.docker.com/linux/ubuntu/gpg | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-key add -
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;stable repository 등록
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository &lt;span class=&quot;s2&quot;&gt;&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;lsb_release &lt;span class=&quot;nt&quot;&gt;-cs&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; stable&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;docker engine 설치
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker-ce docker-ce-cli containerd.io
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;설치 확인
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152668784-9f8103f9-6d13-467b-9b6d-9891fa332fae.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;정상적으로 설치된 것을 알 수 있다.&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="Docker" /><summary type="html">Intro 처음 접해본 Docker는 신세계였다. 그래서 정리하였다.</summary></entry><entry><title type="html">[Docker] 설치부터 사용까지!_02(기초 - 이미지 받기)</title><link href="http://localhost:4000/docker/2022/02/02/docker-02-docker-image-download.html" rel="alternate" type="text/html" title="[Docker] 설치부터 사용까지!_02(기초 - 이미지 받기)" /><published>2022-02-02T00:00:00+09:00</published><updated>2022-02-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/02/docker-02-docker-image-download</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/02/docker-02-docker-image-download.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Docker의 기본적인 기능을 아라보자.&lt;/p&gt;
 
 &lt;h2 id=&quot;실행-환경&quot;&gt;실행 환경&lt;/h2&gt;
@@ -285,52 +425,7 @@ or
 &lt;ul&gt;
   &lt;li&gt;이미지 ID는 IMAGE ID 부분에 ‘54c9d81cbb44’을 의미한다.&lt;/li&gt;
   &lt;li&gt;[TIP] 삭제시 이미지 ID의 앞 3자리만 입력해도 삭제가 된다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="Docker" /><summary type="html">Intro Docker의 기본적인 기능을 아라보자.</summary></entry><entry><title type="html">[Docker] 설치부터 사용까지!_01(설치)</title><link href="http://localhost:4000/docker/2022/02/02/docker-01-docker-install.html" rel="alternate" type="text/html" title="[Docker] 설치부터 사용까지!_01(설치)" /><published>2022-02-02T00:00:00+09:00</published><updated>2022-02-02T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/02/docker-01-docker-install</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/02/docker-01-docker-install.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;처음 접해본 Docker는 신세계였다. 그래서 정리하였다.&lt;/p&gt;
-
-&lt;h2 id=&quot;설치-환경&quot;&gt;설치 환경&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;WSL2 ubunt LTS 20.04&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;설치&quot;&gt;설치&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;기존 도커를 삭제하자
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get remove docker docker-engine docker.io containerd runc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;다운로드를 위한 package 설치 해주자
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; - y 
-  apt-transport-https &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  ca-certificates &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  curl &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  gnupg &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  software-properties-common
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Official GPG Key등록
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://download.docker.com/linux/ubuntu/gpg | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-key add -
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;stable repository 등록
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository &lt;span class=&quot;s2&quot;&gt;&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;lsb_release &lt;span class=&quot;nt&quot;&gt;-cs&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; stable&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;docker engine 설치
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker-ce docker-ce-cli containerd.io
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;설치 확인
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152668784-9f8103f9-6d13-467b-9b6d-9891fa332fae.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;정상적으로 설치된 것을 알 수 있다.&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="Docker" /><summary type="html">Intro 처음 접해본 Docker는 신세계였다. 그래서 정리하였다.</summary></entry><entry><title type="html">[Windows 10] WSL2 사용 &amp;amp; 설치</title><link href="http://localhost:4000/windows/linux/2022/02/01/wsl2-01.html" rel="alternate" type="text/html" title="[Windows 10] WSL2 사용 &amp;amp; 설치" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/windows/linux/2022/02/01/wsl2-01</id><content type="html" xml:base="http://localhost:4000/windows/linux/2022/02/01/wsl2-01.html">&lt;h2 id=&quot;wsl2-설치-조건&quot;&gt;WSL2 설치 조건&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="Docker" /><summary type="html">Intro Docker의 기본적인 기능을 아라보자.</summary></entry><entry><title type="html">[Windows 10] WSL2 사용 &amp;amp; 설치</title><link href="http://localhost:4000/windows/linux/2022/02/01/wsl2-01.html" rel="alternate" type="text/html" title="[Windows 10] WSL2 사용 &amp;amp; 설치" /><published>2022-02-01T00:00:00+09:00</published><updated>2022-02-01T00:00:00+09:00</updated><id>http://localhost:4000/windows/linux/2022/02/01/wsl2-01</id><content type="html" xml:base="http://localhost:4000/windows/linux/2022/02/01/wsl2-01.html">&lt;h2 id=&quot;wsl2-설치-조건&quot;&gt;WSL2 설치 조건&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Windows10 2004 이상(빌드 19041) 버전(버전이 낮으면 윈도우 업데이트를 해야한다.)&lt;/li&gt;

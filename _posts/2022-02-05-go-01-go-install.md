@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[GOLANG] GO 설치부터 사용까지_01(설치부터 환경변수 설정까지) !"
+title: "[GOLANG] GO 설치부터 사용까지_01(설치부터 환경변수 설정까지)"
 tags: 
   - install
   - windows10

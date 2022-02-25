@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "[linux] 리눅스 배치 프로그램 crontab"
+title: "[Spring-Boot] Spring-Boot Properties"
 tags: 
   - properties
 categories:
-  - Sprint-boot
+  - Spring boot
 ---
 
 ## Intro

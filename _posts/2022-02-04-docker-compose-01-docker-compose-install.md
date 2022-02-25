@@ -4,7 +4,7 @@ title: "[docker-compose] 설치부터 사용까지_01(설치)"
 tags: 
   - Docker
   - container
-  - docker-compose
+  - docker compose
 categories:
   - Docker
   

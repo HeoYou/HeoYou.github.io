@@ -2,7 +2,6 @@
 layout: post
 title: "[Docker] 설치부터 사용까지!_02(기초 - 이미지 받기)"
 tags: 
-  - Docker
 categories:
   - Docker
 ---

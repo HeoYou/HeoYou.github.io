@@ -2,7 +2,6 @@
 layout: post
 title: "[Docker] 설치부터 사용까지!_03(기초 - container 활용하기)"
 tags: 
-  - Docker
   - container
 categories:
   - Docker

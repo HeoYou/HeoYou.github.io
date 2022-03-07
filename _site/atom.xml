@@ -1,266 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-24T21:37:40+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[Spring-Boot] Spring-Boot 설정을 아라보자_02(@Component vs Configuration)</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-02-Configuration-properties.html" rel="alternate" type="text/html" title="[Spring-Boot] Spring-Boot 설정을 아라보자_02(@Component vs Configuration)" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-02-Configuration-properties</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-02-Configuration-properties.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;Component vs Comfiguration ~&lt;/p&gt;
-
-&lt;h2 id=&quot;빈을-만드는-방법&quot;&gt;빈을 만드는 방법&lt;/h2&gt;
-
-&lt;h3 id=&quot;1-component&quot;&gt;1. @Component&lt;/h3&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BubbleSort&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Comparable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;{&lt;/span&gt;
-    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-      &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2-configuration&quot;&gt;2. @Configuration&lt;/h3&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-  &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bubbleSort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BubbleSort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;보편적으로 빈을 생성하는 방법이다&lt;/li&gt;
-  &lt;li&gt;프록시 빈 형태로 빈을 생성한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;3-component&quot;&gt;3. @Component&lt;/h3&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-  &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bubbleSort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BubbleSort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Lite Mode(경량 빈) 빈 등록 &lt;br /&gt;
-기본적으로 빈을 만들게 되면 프록시 빈으로 만든다.
-하지만 Lite Mode는 프록시 빈으로 등록하지 않는다.
-** 프록시 빈은 따로 알아보자**&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;기본적인 빈들은 AOP에서 사용하는 프록시 빈으로 생성을 한다. 하지만 경량빈은 프록시 빈으로 생성하지 않기 때문에 여러 번을 호출하면 여러개의 인스턴스가 생성된다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;일반적으로 AOP의 기능을 사용하려면 프록시 빈으로 생성해야 한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;왜-lite-mode인가&quot;&gt;왜 Lite Mode인가?&lt;/h4&gt;
-&lt;p&gt;일반적으로 프록시 빈을 만들 때 좀더 오랜 시간이 소요 된다.
-더빠르게 만들어지기 때문에 Lite Mode이다&lt;/p&gt;
-
-&lt;h2 id=&quot;component-vs-bean&quot;&gt;Component vs Bean?&lt;/h2&gt;
-
-&lt;h3 id=&quot;component&quot;&gt;@Component&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-07T21:08:02+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[Network] Network_01 컴퓨터 네트워크와 인터넷</title><link href="http://localhost:4000/network/2022/03/07/network-01.html" rel="alternate" type="text/html" title="[Network] Network_01 컴퓨터 네트워크와 인터넷" /><published>2022-03-07T00:00:00+09:00</published><updated>2022-03-07T00:00:00+09:00</updated><id>http://localhost:4000/network/2022/03/07/network-01</id><content type="html" xml:base="http://localhost:4000/network/2022/03/07/network-01.html">&lt;h2 id=&quot;컴퓨터-네트워크와-인터넷&quot;&gt;컴퓨터 네트워크와 인터넷&lt;/h2&gt;
+&lt;h3 id=&quot;네트워크와-인터넷&quot;&gt;네트워크와 인터넷&lt;/h3&gt;
+&lt;h4 id=&quot;네트워크&quot;&gt;네트워크&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;Class-level annotation(클래스에 등록한다)&lt;/li&gt;
-  &lt;li&gt;등록하려는 빈의 클래스 소스가 편집 가능한 경우 사용&lt;/li&gt;
-  &lt;li&gt;auto-detection에 걸림&lt;/li&gt;
+  &lt;li&gt;종단 시스템(end system): pc나 스마트폰처럼 네트워크 송수신 주체&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;프로토콜(protocol)&lt;/strong&gt;: 두 이종 시스템을 연결하기 위한 규약&lt;/li&gt;
+  &lt;li&gt;통신을 목적으로 실제 물리적으로 선으로 연결되어 있거나 무선으로 연결&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;bean&quot;&gt;@Bean&lt;/h3&gt;
+&lt;h4 id=&quot;인터넷&quot;&gt;인터넷&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;method-level annotaion(메소드에 등록한다)&lt;/li&gt;
-  &lt;li&gt;좀 더 읽기 쉬움&lt;/li&gt;
-  &lt;li&gt;인스턴스화 하는 코드가 수동으로 작성됨(ex. new를 사용해 인스턴스를 만든다.)&lt;/li&gt;
-  &lt;li&gt;빈의 인스턴스 코드와 클래스 정의가 분리된 구조&lt;/li&gt;
-  &lt;li&gt;따라서 외부 라이브러리, 써드 파티 클래스도 빈으로 등록 가능&lt;/li&gt;
+  &lt;li&gt;회사 혹은 소규모의 네트워크에서 전세계 네트워크와 연결된 상태&lt;/li&gt;
+  &lt;li&gt;다양한 애플리케이션 서비스 제공&lt;/li&gt;
+  &lt;li&gt;종단 시스템은 보통 ISP(Internet Service Provider)에 의해 연결&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;component-stereotype-annotaions&quot;&gt;Component: Stereotype Annotaions&lt;/h2&gt;
-&lt;p&gt;컴포넌트에 해당하는 스테레오 타입 어노테이션들&lt;/p&gt;
+&lt;h4 id=&quot;osi-7계층-layer&quot;&gt;OSI 7계층 (Layer)&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;@Controller&lt;/li&gt;
-  &lt;li&gt;@SErvice&lt;/li&gt;
-  &lt;li&gt;@Repository&lt;/li&gt;
+  &lt;li&gt;네트워크 구성요소를 7개의 계층으로 역할을 나눈 표준 모델&lt;/li&gt;
+  &lt;li&gt;각 계층별 역할을 통해 통신 규격(프로토콜)을 만족&lt;/li&gt;
+  &lt;li&gt;일부 하위계층은 하드웨어에서 구현되며 상위계층은 소프트웨어로 구현&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;configuration&quot;&gt;@Configuration&lt;/h2&gt;
-&lt;p&gt;이 클래스는 각종 빈 &lt;strong&gt;설정&lt;/strong&gt;을 담고 있다.
-&lt;br /&gt;
-결국 @Configuration 안에도 @Component가 들어있다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;@SpringBootApplication 이 컴퓨넌트 스캔을 통해 @Configuration을 찾아냄&lt;/li&gt;
-  &lt;li&gt;안의 빈 설정(메소드)을 읽어서 스프링 컨테이너에 등록&lt;/li&gt;
-  &lt;li&gt;필요한 곳에 주입&lt;/li&gt;
-  &lt;li&gt;또는 각종 스프링 인터페이스의 구현에 함께 활용&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;결론-&quot;&gt;결론 !!!&lt;/h2&gt;
-
-&lt;p&gt;어노테이션이 의도에 맞게 사용되었는지 잘 봐주자&lt;/p&gt;
-
+&lt;h4 id=&quot;tcpip-transmission-control-protocolinternet-protocol&quot;&gt;TCP/IP (Transmission Control Protocol/Internet Protocol)&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;빈 설정은 @Configuration, 클래스 등록은 @Component&lt;/li&gt;
-  &lt;li&gt;정확한 목적을 모르고 쓰면 “잘 모르겠는데 어쨌든 돌아가요” 시간폭탄&lt;/li&gt;
-  &lt;li&gt;IDE가 노란 줄 그어주면
+  &lt;li&gt;OSI 7계층이 나오기전 널리 사용되던 사실상 표준 역할&lt;/li&gt;
+  &lt;li&gt;각 계층별 역할에 따라 나누어짐&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;그밖에-자주-사용되는-용어&quot;&gt;그밖에 자주 사용되는 용어&lt;/h3&gt;
+
+&lt;h4 id=&quot;ip-주소adress&quot;&gt;IP 주소(Adress)&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;통신 자료를 최종적으로 전달하기 위해 필요한 송/수신 위치정보&lt;/li&gt;
+  &lt;li&gt;보통 IPv4의 주소를 사용하며 주소 부족을 위해 IPv6가 개발됨&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;패킷-교환packet-switching&quot;&gt;패킷 교환(Packet Switching)&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;종단간에 전송되는 데이터를 패킷(Packet)이라는 단위로 전달&lt;/li&gt;
+  &lt;li&gt;패킷은 네트워크를 통해 일정한 순서없이 보내지며 어떤 경로를 통해 이동되는지는 네트워크의 상황에 따라 다름.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;통신을-위한-기본-동작&quot;&gt;통신을 위한 기본 동작&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;요청(Request)
     &lt;ul&gt;
-      &lt;li&gt;잘 돌아가네&lt;/li&gt;
-      &lt;li&gt;수정 할 곳이 있다.&lt;/li&gt;
+      &lt;li&gt;전송하는 종단 장치에서 상대방에게 서비스 요청&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Configuration Properties" /><summary type="html">Intro Component vs Comfiguration ~</summary></entry><entry><title type="html">[Spring-Boot] Lombok??_01</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-lombok-01-lombok-start-copy.html" rel="alternate" type="text/html" title="[Spring-Boot] Lombok??_01" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-lombok-01-lombok-start%20copy</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-lombok-01-lombok-start-copy.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;롬복을 대체할 java의 기능이 나왔다.&lt;br /&gt;
-java14 부터 records가 생겻는데 이걸 아라보자&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Configuration Properties" /><category term="Lombok" /><summary type="html">Intro 롬복을 대체할 java의 기능이 나왔다. java14 부터 records가 생겻는데 이걸 아라보자</summary></entry><entry><title type="html">[Spring-Boot] Spring Configuration Processor_01</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-04-Spring-Configuration-Processor-start.html" rel="alternate" type="text/html" title="[Spring-Boot] Spring Configuration Processor_01" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-04-Spring-Configuration-Processor-start</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-04-Spring-Configuration-Processor-start.html">&lt;h1 id=&quot;intro&quot;&gt;Intro&lt;/h1&gt;
-&lt;p&gt;강의에서도 이 기능은 잘 안쓴다고 했다 그래도 들어나보자 !!&lt;/p&gt;
-
-&lt;h2 id=&quot;spring-configuration-processor&quot;&gt;Spring Configuration Processor&lt;/h2&gt;
-&lt;p&gt;application.properties/yml 파일에 넣는 커스텀 설정의 자동완성, 도움말을 지원한다??&lt;br /&gt;
-이게 굳이 필요한건가 싶다.&lt;/p&gt;
-
-&lt;p&gt;예를 들면 ide에서 자바 코드를 코딩하다보면 클래스 안에있는 메소드를 보여주는 식으로 지원하는거 같은데… 엣헴&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Configuration Processor" /><summary type="html">Intro 강의에서도 이 기능은 잘 안쓴다고 했다 그래도 들어나보자 !!</summary></entry><entry><title type="html">[Spring-Boot] Spring-Boot 설정을 아라보자_03(Configuration Properties)</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-03-SpringBoot-Component-vs-Configuration-copy-2.html" rel="alternate" type="text/html" title="[Spring-Boot] Spring-Boot 설정을 아라보자_03(Configuration Properties)" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-03-SpringBoot-Component-vs-Configuration%20copy%202</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/02/24/spring-boot-config-03-SpringBoot-Component-vs-Configuration-copy-2.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;Configuration Properties를 알아보자~!&lt;/p&gt;
-
-&lt;h2 id=&quot;1-configuration-properties&quot;&gt;1. Configuration Properties&lt;/h2&gt;
-&lt;p&gt;각종 설정값을 외부로 분리해낸 것&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;서로 다른 환경에서도 사용할 수 있음&lt;/li&gt;
-  &lt;li&gt;애플리케이션을 새로 컴파일하지 않고 설정값을 바꿀 수 있음&lt;/li&gt;
-  &lt;li&gt;종류
+  &lt;li&gt;인지(Indicate)
     &lt;ul&gt;
-      &lt;li&gt;Java properties file&lt;/li&gt;
-      &lt;li&gt;YAML&lt;/li&gt;
-      &lt;li&gt;environment variable&lt;/li&gt;
-      &lt;li&gt;command-line argument&lt;/li&gt;
+      &lt;li&gt;수신하는 장치에서 작업 요청(이벤트) 확인&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;응답(Response)
+    &lt;ul&gt;
+      &lt;li&gt;수신하는 장치에서 요청받은 작업에 대해 적절히 응답&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;확인(Confirm)
+    &lt;ul&gt;
+      &lt;li&gt;전송 측에서 응답 데이터를 최종적으로 확인&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;11-외부-설정의-우선-순위&quot;&gt;1.1. 외부 설정의 우선 순위&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;디폴트 프로퍼티&lt;/li&gt;
-  &lt;li&gt;@Configuration 클래스에 @PropertySource 로 정의된 것&lt;/li&gt;
-  &lt;li&gt;설정 파일: application.properties&lt;/li&gt;
-  &lt;li&gt;RandomValuePropertySource&lt;/li&gt;
-  &lt;li&gt;OS 환경변수&lt;/li&gt;
-  &lt;li&gt;자바 시스템 프로퍼티: System.getProperties()&lt;/li&gt;
-  &lt;li&gt;JNDI 속성: java:comp/env&lt;/li&gt;
-  &lt;li&gt;ServletContext - 초기 파라미터&lt;/li&gt;
-  &lt;li&gt;ServletConfig - 초기 파라미터&lt;/li&gt;
-  &lt;li&gt;SPRING_APPLICATION_JSON 안의 프로퍼티들&lt;/li&gt;
-  &lt;li&gt;Command-line arguments&lt;/li&gt;
-  &lt;li&gt;테스트에 사용된 프로퍼티들&lt;/li&gt;
-  &lt;li&gt;@TestPropertySource&lt;/li&gt;
-  &lt;li&gt;Devtools 글로벌 세팅: $HOME/.config/spring-boot&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;네트워크의-유형&quot;&gt;네트워크의 유형&lt;/h3&gt;
 
-&lt;h3 id=&quot;12-설정-파일config-data의-우선순위&quot;&gt;1.2. 설정 파일(Config data)의 우선순위&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;JAR 패키지 안의 application.properties, application.yaml&lt;/li&gt;
-  &lt;li&gt;JAR 패키지 안의, 프로파일이 지정된 파일: application-{profile}.properties&lt;/li&gt;
-  &lt;li&gt;JAR 패키지 밖의 파일&lt;/li&gt;
-  &lt;li&gt;JAR 패키지 밖의, 프로파일이 지정된 파일&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;13-설정-파일config-data의-위치우선순위&quot;&gt;1.3. 설정 파일(Config data)의 위치(우선순위)&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;classpath&lt;br /&gt;
-1.1. classpath:/&lt;br /&gt;
-1.2. classpath:/config&lt;/li&gt;
-  &lt;li&gt;현재 디렉토리
-2.1. ./&lt;br /&gt;
-2.2. ./config&lt;br /&gt;
-2.3. ./config/child&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;설정이-중복-될-경우&quot;&gt;설정이 중복 될 경우&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;순서대로 읽기 때문에 우선 순위가 낮은 설정이 남게 된다.&lt;/li&gt;
-  &lt;li&gt;한마디로 처음 설정은 뒤에 설정에 덮어쓰기가 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2-설정-파일config-data을-읽는-방법&quot;&gt;2. 설정 파일(Config data)을 읽는 방법&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;@Value&lt;/li&gt;
-  &lt;li&gt;Environment&lt;/li&gt;
-  &lt;li&gt;@ConfigurationProperties&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;21-value&quot;&gt;2.1 @value&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;SpEL 로 프로퍼티명을 표현&lt;/li&gt;
-  &lt;li&gt;type-safe 하지 않음&lt;/li&gt;
-  &lt;li&gt;인스턴스화 이후에 주입하므로, final 쓸 수 없음&lt;/li&gt;
-  &lt;li&gt;생성자 안에서 보이지 않음 (대안: @PostConstruct)&lt;/li&gt;
-  &lt;li&gt;Relaxed binding 지원 (kebab-case only)&lt;/li&gt;
-  &lt;li&gt;meta-data 없음 (javadoc은 적용 가능)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyBean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nd&quot;&gt;@Value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${name}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h4 id=&quot;참고사항&quot;&gt;참고사항&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;생성자 주입을 하지 않고 필드에 바로 주입했을 경우 값이 정상적으로 들어가지 않는다. 인스턴스가 생성된 후에 값이 들어가기 때문에 잘 확인해야한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2-environment&quot;&gt;2. Environment&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;애플리케이션 컨텍스트에서 꺼내오는 방법&lt;/li&gt;
-  &lt;li&gt;Environment 빈을 가져오는 방법&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;눈에 잘 안들어옴&lt;/p&gt;
+  &lt;li&gt;LAN(Local Area Network)
+    &lt;ul&gt;
+      &lt;li&gt;일정 그룹의 지역 네트워크(집, 사무실, 학교 등)&lt;/li&gt;
+      &lt;li&gt;소규모로 묶이며 사설망 등을 구축해 연결&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Environment 클래스를 이용해서 가져온다
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Environment&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{속성이름}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;li&gt;WAN(Wide Area Network)
+    &lt;ul&gt;
+      &lt;li&gt;.원거리 통신망으로 넓은 범위 연결(국가, 대륙 등)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;크기 유형
+    &lt;ul&gt;
+      &lt;li&gt;LAN &amp;lt; WAN &amp;lt; Internet&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;3-construnctorbinding&quot;&gt;3. ConstrunctorBinding&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Immutable한 프로퍼티를 구현할 수 있는 방법 - 추천&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;네트워크-토폴리지&quot;&gt;네트워크 토폴리지&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157008071-68bc92fd-f685-407d-bb81-05b7c6ff708d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;@ConfigurationProperties 를 이용해서&lt;/li&gt;
-  &lt;li&gt;상수처럼, immutable 하고 type-safe 하고 명확한 프로퍼티를 만들어 사용하자&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Configuration Properties" /><category term="SpringFramework" /><summary type="html">Intro Configuration Properties를 알아보자~!</summary></entry><entry><title type="html">[Spring-Boot] Spring-Boot 설정을 아라보자_01(SpringBootApplication)</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/02/23/spring-boot-config-01-SpringBoot-SpringBootApplication.html" rel="alternate" type="text/html" title="[Spring-Boot] Spring-Boot 설정을 아라보자_01(SpringBootApplication)" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/02/23/spring-boot-config-01-SpringBoot-SpringBootApplication</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/02/23/spring-boot-config-01-SpringBoot-SpringBootApplication.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;강의에서 SpringBootApplication 잘사용하면 스프링의 신이라 했다. 그래서 정리한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;springbootapplication&quot;&gt;SpringBootApplication&lt;/h2&gt;
-
-&lt;p&gt;Application.java 에서 @SpringBootApplication은 자동으로 설정을 해주기 위한 어노테이션으로
-&lt;br /&gt;
-org.springframework.boot.autoconfigure 패키지에 들어 있다.&lt;/p&gt;
-
-&lt;p&gt;SpringBootApplication을 열어보게 되면 스프링의 고유 어노테이션 3개가 있다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@SpringBootConfigurationm&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@EnableAutoConfiguration&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@ComponentScan&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;세 가지가 모두 들어있다. (위 어노테이션들은 나중에 설명)&lt;/p&gt;
-
-&lt;p&gt;SpringBootApplication는 크게 두 단계로 읽힌다. &lt;br /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;@ComponentScan을 통해서 클래스에 @Component라는 어노테이션이 붙어있으면 수집을 한다.
-@Controller, @Service, @Repositorty 등 개발에 자주 사용하는 어노테이션 모두 해당된다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;두번째는 @EnableAutoConfiguration은 spring-boot-autoconfigure/META-INF/spring.fatories안에 들어있는 자동 설정들을 &lt;strong&gt;조건에 따라서&lt;/strong&gt; 등록 한다.(조건은 나중에 다시 정리)&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;@ComponentScan에서 첫번째로 빈들을 등록하고 나머지 빈들은 @EnableAudtoConfiguration을 통해 빈을 등록하는 과정을 거친다.&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Configuration Properties" /><summary type="html">Intro 강의에서 SpringBootApplication 잘사용하면 스프링의 신이라 했다. 그래서 정리한다.</summary></entry><entry><title type="html">[Spring-Boot] Spring-Boot Properties</title><link href="http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties.html" rel="alternate" type="text/html" title="[Spring-Boot] Spring-Boot Properties" /><published>2022-02-22T00:00:00+09:00</published><updated>2022-02-22T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties</id><content type="html" xml:base="http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;h3 id=&quot;네트워크-계층별-역할&quot;&gt;네트워크 계층별 역할&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157009954-36454938-b05f-4363-a5fd-86ec49ddfeb7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Network" /><summary type="html">컴퓨터 네트워크와 인터넷 네트워크와 인터넷 네트워크 종단 시스템(end system): pc나 스마트폰처럼 네트워크 송수신 주체 프로토콜(protocol): 두 이종 시스템을 연결하기 위한 규약 통신을 목적으로 실제 물리적으로 선으로 연결되어 있거나 무선으로 연결</summary></entry><entry><title type="html">[Spring-Boot] Spring-Boot Properties</title><link href="http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties.html" rel="alternate" type="text/html" title="[Spring-Boot] Spring-Boot Properties" /><published>2022-02-22T00:00:00+09:00</published><updated>2022-02-22T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties</id><content type="html" xml:base="http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Spring boot properties&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="properties" /><summary type="html">Intro Spring boot properties</summary></entry><entry><title type="html">[Spring-Boot] Spring Cache Abstraction_01(Start)</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/02/21/spring-boot-cache-Abstraction-01.html" rel="alternate" type="text/html" title="[Spring-Boot] Spring Cache Abstraction_01(Start)" /><published>2022-02-21T00:00:00+09:00</published><updated>2022-02-21T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/02/21/spring-boot-cache-Abstraction-01</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/02/21/spring-boot-cache-Abstraction-01.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;처음 들어본다 하지만 성능에 영향을 끼친다고 한다 공부해보자&lt;/p&gt;
 
@@ -308,7 +138,7 @@ org.springframework.boot.autoconfigure 패키지에 들어 있다.&lt;/p&gt;
   &lt;li&gt;@Cacheable : 캐시 등록&lt;/li&gt;
   &lt;li&gt;@CacheEvict : 캐시 삭제&lt;/li&gt;
   &lt;li&gt;@CachePut : 캐시 갱신&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Cache Abstraction" /><summary type="html">Intro 처음 들어본다 하지만 성능에 영향을 끼친다고 한다 공부해보자</summary></entry><entry><title type="html">[linux] 리눅스 배치 프로그램 crontab</title><link href="http://localhost:4000/linux/2022/02/15/linux-crontab-copy.html" rel="alternate" type="text/html" title="[linux] 리눅스 배치 프로그램 crontab" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/linux/2022/02/15/linux-crontab%20copy</id><content type="html" xml:base="http://localhost:4000/linux/2022/02/15/linux-crontab-copy.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Cache Abstraction" /><summary type="html">Intro 처음 들어본다 하지만 성능에 영향을 끼친다고 한다 공부해보자</summary></entry><entry><title type="html">[linux] 리눅스 배치 프로그램 crontab</title><link href="http://localhost:4000/linux/2022/02/15/linux-crontab.html" rel="alternate" type="text/html" title="[linux] 리눅스 배치 프로그램 crontab" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-15T00:00:00+09:00</updated><id>http://localhost:4000/linux/2022/02/15/linux-crontab</id><content type="html" xml:base="http://localhost:4000/linux/2022/02/15/linux-crontab.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;Spring boot의 버전별 변천사를 아라보자&lt;/p&gt;
 
 &lt;h2 id=&quot;crontab&quot;&gt;crontab&lt;/h2&gt;
@@ -607,4 +437,331 @@ org.springframework.boot.autoconfigure 패키지에 들어 있다.&lt;/p&gt;
       &lt;li&gt;보안이 중요한 기능들은 명시적으로 작성하게끔 변경 (ex: actuator)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Change history" /><summary type="html">Intro Spring boot의 버전별 변천사를 아라보자</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Change history" /><summary type="html">Intro Spring boot의 버전별 변천사를 아라보자</summary></entry><entry><title type="html">[GOLANG] GO 설치부터 사용까지_01(설치부터 환경변수 설정까지)</title><link href="http://localhost:4000/go/2022/02/05/go-01-go-install.html" rel="alternate" type="text/html" title="[GOLANG] GO 설치부터 사용까지_01(설치부터 환경변수 설정까지)" /><published>2022-02-05T00:00:00+09:00</published><updated>2022-02-05T00:00:00+09:00</updated><id>http://localhost:4000/go/2022/02/05/go-01-go-install</id><content type="html" xml:base="http://localhost:4000/go/2022/02/05/go-01-go-install.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;GO를 다뤄보자!&lt;/p&gt;
+
+&lt;h2 id=&quot;설치-환경&quot;&gt;설치 환경&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;windows10&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;설치&quot;&gt;설치&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-go-홈페이지에-들어가자-홈페이지로&quot;&gt;1. go 홈페이지에 들어가자! &lt;a href=&quot;https://go.dev/&quot;&gt;[홈페이지로]&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152995306-c1adb877-c07f-42c3-90ae-fa15779cd68c.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다운로드가 대문짝만하게 보입니다. 다운로드 클릭&lt;/p&gt;
+
+&lt;h3 id=&quot;2-자신이-원하는-버전-또는-os버전을-골라-다운로드-합니다&quot;&gt;2. 자신이 원하는 버전 또는 os버전을 골라 다운로드 합니다.&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152995899-87ea16c2-fa2a-4437-afe7-29bb58ea45f9.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;저는 개인적으로 설치형태보다는 압축형태로 다운로드해서 사용하는걸 좋아합니다. 
+&lt;br /&gt;
+그래서 zip파일인 아래에서 두번째 파일을 다운로드 하겠습니다. 
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152996602-bc5a8244-04f0-486d-bd80-c6edea119c07.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원하는 경로에 다운로드 후 압축을 풀어줍니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-환경설정&quot;&gt;3. 환경설정&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152997711-e32dad5a-7e90-41f9-aabb-61008e9cc2fa.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;내 PC -&amp;gt; 속성 -&amp;gt; 고급 시스템 설정 -&amp;gt; 고급 탭 -&amp;gt; 환경 변수 들어가면 위와같은 화면이 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152998113-a354ef57-fdd8-490e-940e-232e16111aa6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;시스템 변수 -&amp;gt; 새로 만들기 클릭
+&lt;br /&gt;
+변수이름에 ‘GOROOT’적고 변수 값에 본인이 다운로드한 go의 경로를 입력합니다.(압축을 풀어준 상태)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;—한번 더—&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152998615-8bf10a2a-846f-4bf1-bd7f-ccad1598180d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;시스템 변수 -&amp;gt; 새로 만들기 클릭
+&lt;br /&gt;
+변수이름에 ‘GOPATH’적고 변수 값에 본인이 설정한 GOPATH의 경로를 입력합니다.(GOPATH는 제가 원하는 경로로 따로 만들어 두었습니다.)&lt;/p&gt;
+
+&lt;h3 id=&quot;4-설치-확인&quot;&gt;4. 설치 확인&lt;/h3&gt;
+
+&lt;p&gt;커멘드 창에 들어갑니다. 다음 명령어를 입력합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;go version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152998944-4fcfc6fb-6c34-4c18-bd9a-ac3ab45d75cd.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;버전이 나오는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;go env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;위 명령어 입력 시 수정한 GOPATH도 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152999363-2d54e57d-1b2e-416a-8a9d-c358e4f2f0de.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="go" /><category term="install" /><category term="windows10" /><summary type="html">Intro GO를 다뤄보자!</summary></entry><entry><title type="html">[docker-compose] 설치부터 사용까지_01(설치)</title><link href="http://localhost:4000/docker/2022/02/04/docker-compose-01-docker-compose-install.html" rel="alternate" type="text/html" title="[docker-compose] 설치부터 사용까지_01(설치)" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/04/docker-compose-01-docker-compose-install</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/04/docker-compose-01-docker-compose-install.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Docker compose는 복잡한 명령어를 편리하게 관리하도록 도와준다. 
+&lt;br /&gt;
+그래서 설치해 보았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;설치-환경&quot;&gt;설치 환경&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;WSL2 ubuntu LTS 20.04&lt;/li&gt;
+  &lt;li&gt;Docker 20.10.12 &lt;a href=&quot;https://heoyou.github.io/docker/2022/02/02/docker-01-docker-install.html&quot;&gt;[설치하러 가기]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;docker-compose-설치하기&quot;&gt;Docker compose 설치하기&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-다운로드&quot;&gt;1. 다운로드&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;uname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;uname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;도커 컴포즈 설치(버전 수정이 가능하다)&lt;a href=&quot;https://github.com/docker/compose/releases&quot;&gt;[버전 확인하러 가기]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-실행-권한-적용&quot;&gt;2. 실행 권한 적용&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-심볼릭-링크-설정&quot;&gt;3. 심볼릭 링크 설정&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /usr/local/bin/docker-compose /usr/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-설치-확인&quot;&gt;4. 설치 확인&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker-compose &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152796338-af762243-7e5a-4b2d-8a52-d09de2f6a8c0.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="Docker" /><category term="container" /><category term="docker compose" /><summary type="html">Intro Docker compose는 복잡한 명령어를 편리하게 관리하도록 도와준다. 그래서 설치해 보았다.</summary></entry><entry><title type="html">[Spring-Boot] Lombok??_01</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/02/04/spring-boot-lombok-01-lombok-start-copy.html" rel="alternate" type="text/html" title="[Spring-Boot] Lombok??_01" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/02/04/spring-boot-lombok-01-lombok-start%20copy</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/02/04/spring-boot-lombok-01-lombok-start-copy.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;롬복을 대체할 java의 기능이 나왔다.&lt;br /&gt;
+java14 부터 records가 생겻는데 이걸 아라보자&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Configuration Properties" /><category term="Lombok" /><summary type="html">Intro 롬복을 대체할 java의 기능이 나왔다. java14 부터 records가 생겻는데 이걸 아라보자</summary></entry><entry><title type="html">[Docker] 설치부터 사용까지!_03(기초 - container 활용하기)</title><link href="http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container-copy.html" rel="alternate" type="text/html" title="[Docker] 설치부터 사용까지!_03(기초 - container 활용하기)" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-03T00:00:00+09:00</updated><id>http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container%20copy</id><content type="html" xml:base="http://localhost:4000/docker/2022/02/03/docker-03-docker-make-container-copy.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Docker의 기본적인 기능을 아라보자.&lt;/p&gt;
+
+&lt;h2 id=&quot;실행-환경&quot;&gt;실행 환경&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;WSL2 ubuntu LTS 20.04&lt;/li&gt;
+  &lt;li&gt;Docker 20.10.12&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152668784-9f8103f9-6d13-467b-9b6d-9891fa332fae.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;docker-container-활용하기&quot;&gt;Docker container 활용하기&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-docker-image-준비하기&quot;&gt;1. Docker Image 준비하기&lt;/h3&gt;
+&lt;p&gt;학습을 위해 ubuntu 18.04 이미지를 다운로드 하겠습니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker pull ubuntu:18.04
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152669866-ed2bda96-11b8-4c21-aed0-9f1d14af0701.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ubuntu 18.04버전이 다운로드 된 것을 확인 할 수 있습니다.
+&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-container-명령어&quot;&gt;2. Container 명령어&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;docker run
+    &lt;ul&gt;
+      &lt;li&gt;컨테이너를 실행시키는 명령어 입니다.
+  &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;옵션&lt;/th&gt;
+          &lt;th&gt;설명&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-i&lt;/td&gt;
+          &lt;td&gt;-t와 같이 사용해야 합니다. 표준입력을 활성화시키며 컨테이너와&lt;br /&gt; 연결되어있지 않더라도 표준입력을 유지합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-t&lt;/td&gt;
+          &lt;td&gt;-i옵션과 같이 사용해야 합니다. TTY모드로 사용하며 bash를 사용하기 &lt;br /&gt;위해서는 꼭 필요합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-d&lt;/td&gt;
+          &lt;td&gt;컨테이너를 백그라운드 모드로 실행, ps명령어로 실행되는지 확인할 수 있습니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-p&lt;/td&gt;
+          &lt;td&gt;컨테이너 포트를 호스트와 연결합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;—–name&lt;/td&gt;
+          &lt;td&gt;컨테이너의 이름을 설정합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-e&lt;/td&gt;
+          &lt;td&gt;컨테이너의 환경변수를 설정할 수 있습니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-v&lt;/td&gt;
+          &lt;td&gt;컨테이너의 볼륨(volumn) 설정을 위해 사용됩니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;—–rm&lt;/td&gt;
+          &lt;td&gt;컨테이너 정지 시 자동 삭제합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;docker ps
+    &lt;ul&gt;
+      &lt;li&gt;컨테이너의 정보를 볼 수 있습니다.
+  &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;옵션&lt;/th&gt;
+          &lt;th&gt;설명&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-a&lt;/td&gt;
+          &lt;td&gt;모든 컨테이너의 정보를 출력한니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-f&lt;/td&gt;
+          &lt;td&gt;컨테이너 리스트를 필터링하여 출력합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-l&lt;/td&gt;
+          &lt;td&gt;마지막에 만든 컨테이너를 출력합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-q&lt;/td&gt;
+          &lt;td&gt;컨테이터의 ID만 출력합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;-s&lt;/td&gt;
+          &lt;td&gt;컨테이너의 사이즈를 출력합니다.&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;docker start
+    &lt;ul&gt;
+      &lt;li&gt;컨테이너를 실행시킵니다.
+  &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;docker stop
+    &lt;ul&gt;
+      &lt;li&gt;컨테이너를 중지시킵니다.
+  &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;docker attach
+    &lt;ul&gt;
+      &lt;li&gt;실행중인 컨테이너에 연결합니다.
+  &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;docker restart
+    &lt;ul&gt;
+      &lt;li&gt;컨테이너를 재실행합니다.
+  &lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;3-container-만들기&quot;&gt;3. Container 만들기&lt;/h3&gt;
+&lt;p&gt;이미지를 실행시켜 컨테이너로 만들기 위해서는 ‘run’옵션을 활용합니다. 
+&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;option] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;image[:tag]] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;COMMAND] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;ARG...]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;기본적인 사용법
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;직접-해보기&quot;&gt;직접 해보기&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152674678-56864c7d-8dd6-4e32-adde-61368609dcc4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker images
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; ubuntu18 ubuntu:18.04 /bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;docker images를 이용하여 이미지의 정보를 확인&lt;/li&gt;
+  &lt;li&gt;순서대로 -it옵션, 이름 ubunut18, 이미지 ubuntu, 이미지 태그 18.04, /bin/bash 명령어입니다.&lt;/li&gt;
+  &lt;li&gt;컨테이너 내부에 접속해 ubuntu 버전을 확인한 모습을 볼 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[TIP]&lt;/strong&gt; 이미지 이름과 태그를 넣지않고 IMAGE ID를 이용할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; ubuntu18 dcf /bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;[INFO]&lt;/strong&gt; —–name 다음엔 공백과 =가 모두 같은 동작을 한다&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ubuntu18 dcf /bin/bash
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; ubuntu18 dcf /bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;contaier에서-나가기&quot;&gt;Contaier에서 나가기&lt;/h4&gt;
+&lt;p&gt;컨테이너에서 나가는 방법은 여러개 있습니다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;ctrl + p + q&lt;/li&gt;
+  &lt;li&gt;exit 입력&lt;/li&gt;
+  &lt;li&gt;강제 종료&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;exit 또는 강제 종료를 할 경우 컨테이너가 중단됩니다.
+&lt;br /&gt;
+컨테이너를 종료시키지 않으려면 ctrl + p + q를 사용해야합니다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;4-container-확인&quot;&gt;4. Container 확인&lt;/h3&gt;
+&lt;p&gt;생성한 컨테이너에서 나와서 만들어진 컨테이너를 확인해 보겠습니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker ps &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;모든 컨테이너를 확인하기 위해 -a옵션을 붙여주었습니다. 
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152675831-de3c3fca-47ec-491b-8c26-6a31e8831999.png&quot; alt=&quot;image&quot; /&gt;
+컨테이너에서 ctrl + p + q를 이용하여 빠져나왔기 때문에 아직 컨테이너가 중지되지 않았습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152675911-542f4523-d068-4d4b-b7bb-2dd967861533.png&quot; alt=&quot;image&quot; /&gt;
+exit를 사용하여 빠져나오게 되면 컨테이너가 중지됩니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-container-실행&quot;&gt;5. Container 실행&lt;/h3&gt;
+
+&lt;p&gt;죽어있는 컨테이너를 실행시키겠습니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker start 998
+or
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker start ubuntu18
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;명령어중 마지막 인자 CONTAINER ID 또는 NAMES중 편하신거 이용하시면됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152676104-ac061385-9a44-41c6-b070-50ec2933f1af.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;6-container-접속&quot;&gt;6. Container 접속&lt;/h3&gt;
+
+&lt;p&gt;attach 명령어 또는 exec 명령어를 사용해 들어갑니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker attach 998
+or
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; 998 /bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;attach와 다르게 exec는 다양한 옵션을 사용할 수 있습니다. (나중에 정리)&lt;/p&gt;
+
+&lt;h3 id=&quot;7-container-중지&quot;&gt;7. Container 중지&lt;/h3&gt;
+
+&lt;p&gt;stop 명령어를 사용합니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker stop 998
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;8-container-삭제&quot;&gt;8. Container 삭제&lt;/h3&gt;
+
+&lt;p&gt;rm 명령어를 이용합니다. -f옵션을 넣어주면 실행중인 컨테이너도 삭제가 가능합니다
+&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152676374-d612900a-cfee-47b4-8fdf-f43973e91e5a.png&quot; alt=&quot;image&quot; /&gt;
+실행중인 컨테이너를 삭제하려고 하였으나 삭제가 안되어 -f 옵션을 넣어 삭제 했습니다.&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Docker" /><category term="container" /><summary type="html">Intro Docker의 기본적인 기능을 아라보자.</summary></entry></feed>

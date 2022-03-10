@@ -1,4 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-09T23:49:10+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[운영체제] Operating-System_01</title><link href="http://localhost:4000/operating%20system/2022/03/09/operating-system-01.html" rel="alternate" type="text/html" title="[운영체제] Operating-System_01" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/2022/03/09/operating-system-01</id><content type="html" xml:base="http://localhost:4000/operating%20system/2022/03/09/operating-system-01.html">&lt;h2 id=&quot;컴퓨터-시스템의-기본-구성&quot;&gt;컴퓨터 시스템의 기본 구성&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-10T23:24:52+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[데이터 베이스] DataBase(기본 개념)_01</title><link href="http://localhost:4000/database/2022/03/10/database-01.html" rel="alternate" type="text/html" title="[데이터 베이스] DataBase(기본 개념)_01" /><published>2022-03-10T00:00:00+09:00</published><updated>2022-03-10T00:00:00+09:00</updated><id>http://localhost:4000/database/2022/03/10/database-01</id><content type="html" xml:base="http://localhost:4000/database/2022/03/10/database-01.html">&lt;h2 id=&quot;데이터베이스-정의&quot;&gt;데이터베이스 정의&lt;/h2&gt;
+
+&lt;h3 id=&quot;데이터베이스&quot;&gt;데이터베이스&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;특정 조직의 여러 사용자가 공유하여 사용할 수 있도록 통합해서 저장한 운영 데이터의 집합&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;데이터베이스-예제&quot;&gt;데이터베이스 예제&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;은행: 계좌정보, 입출금 내역 등&lt;/li&gt;
+  &lt;li&gt;항공사: 예약정보, 비행기 스케쥴&lt;/li&gt;
+  &lt;li&gt;대학교: 학생정보, 수강신청&lt;/li&gt;
+  &lt;li&gt;온라인 쇼핑몰: 고객기록, 주문내역&lt;/li&gt;
+  &lt;li&gt;제조업: 제품목록, 주문, 재고, 공급망&lt;/li&gt;
+  &lt;li&gt;회사 인사시스템: 직원정보, 연봉&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;데이터베이스-특징&quot;&gt;데이터베이스 특징&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157679905-56b99948-0258-4954-9d3e-64ad411f2c77.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;데이터의-유형&quot;&gt;데이터의 유형&lt;/h2&gt;
+
+&lt;h3 id=&quot;데이터베이스는-데이터가-모여-있는-집합&quot;&gt;데이터베이스는 데이터가 모여 있는 집합&lt;/h3&gt;
+
+&lt;h3 id=&quot;데이터의-유형-1&quot;&gt;데이터의 유형&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;정형 데이터(structured data)
+    &lt;ul&gt;
+      &lt;li&gt;엑셀의 스프레드시트, 관계데이터베이스의 테이블&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;반정형 데이터(semi-structured data)
+    &lt;ul&gt;
+      &lt;li&gt;self-descibing data : HTML, XML, JSON&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;비정형 데이터(unstructured data)
+    &lt;ul&gt;
+      &lt;li&gt;정해진 구조가 없이 저장된 데이터&lt;/li&gt;
+      &lt;li&gt;text, 멀티미디어 데이터?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;파일-시스템을-사용했을-때의-문제점1&quot;&gt;파일 시스템을 사용했을 때의 문제점(1)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터 중복성 문제: 공간 낭비&lt;/li&gt;
+  &lt;li&gt;업데이트 및 데이터 일관성(data consistency)유지에 어려움&lt;/li&gt;
+  &lt;li&gt;데이터 무결성(Data integrity constraints)유지 어려움
+    &lt;ul&gt;
+      &lt;li&gt;응용프로그램이 모두 체크해야 함 (예제. 나이&amp;gt;0)&lt;/li&gt;
+      &lt;li&gt;엑셀이 스프레드시트, 관계데이터베이스의 테이블&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;데이터 종속성
+    &lt;ul&gt;
+      &lt;li&gt;응용프로그램이 파일 데이터 구조에 종속적&lt;/li&gt;
+      &lt;li&gt;파일구조가 바뀔 때마다 응용프로그램 교체 필요&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157681030-11ca3eaa-93e0-40de-af7b-85bb8778861b.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;파일-시스템을-사용했을-때의-문제점2&quot;&gt;파일 시스템을 사용했을 때의 문제점(2)&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;동시성 (Concurrency)제공이 어려움
+    &lt;ul&gt;
+      &lt;li&gt;여러 사용자가 동시에 접근할 때 문제 해결에 어려움&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;원자성 (Atomicity) 제공 어려움
+    &lt;ul&gt;
+      &lt;li&gt;파일 변경 중에 시스템 장애가 발생했을 때 처리 어려움&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;보안 (Security)제공 이슈
+    &lt;ul&gt;
+      &lt;li&gt;사용자 별 파일 안의 일부 데이터 읽기 권한 제어가 어려움&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;데이터베이스-관리시스템dbms이-해답&quot;&gt;데이터베이스 관리시스템(DBMS)이 해답&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;응용프로그램과 데이터 파일 분리
+    &lt;ul&gt;
+      &lt;li&gt;프로그램은 데이터베이스 통해서 파일시스템의 파일에 저장한 데이터에 접근&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;데이터베이스 관리시스템(DBMS)
+    &lt;ul&gt;
+      &lt;li&gt;응용프로그램과 데이터 연결을 도와주며 데이터 관리와 데이터에 대한 기본 처리를 담당하는 추가적인 소프트웨어&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157681899-b9922f96-068d-4193-8f80-9307ddc32a9c.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="DataBase" /><summary type="html">데이터베이스 정의</summary></entry><entry><title type="html">[운영체제] Operating-System_01</title><link href="http://localhost:4000/operating%20system/2022/03/09/operating-system-01.html" rel="alternate" type="text/html" title="[운영체제] Operating-System_01" /><published>2022-03-09T00:00:00+09:00</published><updated>2022-03-09T00:00:00+09:00</updated><id>http://localhost:4000/operating%20system/2022/03/09/operating-system-01</id><content type="html" xml:base="http://localhost:4000/operating%20system/2022/03/09/operating-system-01.html">&lt;h2 id=&quot;컴퓨터-시스템의-기본-구성&quot;&gt;컴퓨터 시스템의 기본 구성&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;컴퓨터 시스템의 기본 구성을 알 수 있다.&lt;/li&gt;
   &lt;li&gt;운영체제가 무엇이고, 어떤 일을 수행하는지 이해한다.&lt;/li&gt;
@@ -657,6 +759,4 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;위 명령어 입력 시 수정한 GOPATH도 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152999363-2d54e57d-1b2e-416a-8a9d-c358e4f2f0de.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="go" /><category term="install" /><category term="windows10" /><summary type="html">Intro GO를 다뤄보자!</summary></entry><entry><title type="html">[Spring-Boot] Lombok??_01</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/02/04/spring-boot-lombok-01-lombok-start-copy.html" rel="alternate" type="text/html" title="[Spring-Boot] Lombok??_01" /><published>2022-02-04T00:00:00+09:00</published><updated>2022-02-04T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/02/04/spring-boot-lombok-01-lombok-start%20copy</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/02/04/spring-boot-lombok-01-lombok-start-copy.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;롬복을 대체할 java의 기능이 나왔다.&lt;br /&gt;
-java14 부터 records가 생겻는데 이걸 아라보자&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="Spring Framework" /><category term="Configuration Properties" /><category term="Lombok" /><summary type="html">Intro 롬복을 대체할 java의 기능이 나왔다. java14 부터 records가 생겻는데 이걸 아라보자</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/152999363-2d54e57d-1b2e-416a-8a9d-c358e4f2f0de.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="go" /><category term="install" /><category term="windows10" /><summary type="html">Intro GO를 다뤄보자!</summary></entry></feed>

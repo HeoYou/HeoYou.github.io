@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Algorism] Dictionary로 tree만들기(Python)"
+title: "[Algorithm] Dictionary로 tree만들기(Python)"
 tags: 
   - Dict
   - tree
   - Python
 categories:
-  - Algorism
+  - Algorithm
 ---
 
 

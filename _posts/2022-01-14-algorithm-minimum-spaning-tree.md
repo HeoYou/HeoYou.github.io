@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "[Algorism] Minimun Spanning Tree(최소 신장 트리)"
+title: "[Algorithm] Minimun Spanning Tree(최소 신장 트리)"
 tags: 
   - Minimum Spanning Tree
   - Python
 categories:
-  - Algorism
+  - Algorithm
 ---
 
 

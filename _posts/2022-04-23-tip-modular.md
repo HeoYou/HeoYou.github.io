@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[TIP] 모듈러의 성질"
+title: "[TIP] 모듈러 연산의 성질"
 tags: 
   - tip
 

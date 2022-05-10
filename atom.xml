@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-28T23:54:28+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[Algorithm] Union-Find</title><link href="http://localhost:4000/algorithm/2022/04/28/algorithm-union-find.html" rel="alternate" type="text/html" title="[Algorithm] Union-Find" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/04/28/algorithm-union-find</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/04/28/algorithm-union-find.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-10T23:25:53+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[TDD]Test Driven Development</title><link href="http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd).html" rel="alternate" type="text/html" title="[TDD]Test Driven Development" /><published>2022-05-09T00:00:00+09:00</published><updated>2022-05-09T00:00:00+09:00</updated><id>http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd)</id><content type="html" xml:base="http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd).html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;spring 강의를 듣는중에 TDD에 대한 설명이 나온다 정리해보자&lt;/p&gt;
+
+&lt;h2 id=&quot;tdd&quot;&gt;TDD??&lt;/h2&gt;
+
+&lt;p&gt;테스트 주도 개발 기법&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로그램의 설계와 구현, 사고의 흐름을 테스트 중심으로 생각하는 개발 방법&lt;/li&gt;
+  &lt;li&gt;개발 순서의 변화
+    &lt;ul&gt;
+      &lt;li&gt;as-is: 구현한다 -&amp;gt; 테스트한다&lt;/li&gt;
+      &lt;li&gt;to-be: 테스트를 만든다 -&amp;gt; 구현한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;주요 키워드: 익스트림 프로그래밍(XP??이건뭐지 검색해봐야겠다), 애자일, 폭포수, Test-First Programming&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tdd의-개발-사이클&quot;&gt;TDD의 개발 사이클&lt;/h2&gt;
+&lt;h3 id=&quot;red-green-refactor&quot;&gt;RED-GREEN-REFACTOR&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;RED: (실패하는) 테스트를 짠다.(요구사항의 명세)&lt;/li&gt;
+  &lt;li&gt;GREEN: 테스트를 성공시킨다.(구현)&lt;/li&gt;
+  &lt;li&gt;REFACTOR: 구현 코드를 고도화(리팩토링)한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/167434704-64942a75-fc70-4c7e-89ff-12dceb72cdda.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;given-when-then&quot;&gt;Given-When-Then&lt;/h3&gt;
+&lt;p&gt;테스트의 구조를 표현하는 방법(a.k.a 3A, Arrange - Act - Assert)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Given(Arrange): 상태(state)의 정의 - 테스트를 수행할 때 전제 조건&lt;/li&gt;
+  &lt;li&gt;When(Act): 동작 - 테스트 실행&lt;/li&gt;
+  &lt;li&gt;Then(Assert): 검증 - 동작의 결과(actual) vs. 예상값(expected)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/167435597-2c0c03d6-d286-4645-adbb-b707520c7004.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;왜-tdd를-사용해야-하지&quot;&gt;왜 TDD를 사용해야 하지??&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;내가 지금 뭘 하려는지 명확히 안다는 사실을, 스스로 지속적으로 확인한다.(테스트를 먼저 작성해서 테스트를 확인하기 위한 구현을 하면서 어떤걸 하는지 명확히 안다.)
+    &lt;ul&gt;
+      &lt;li&gt;개발이 지연되는 이유 중 하나는 막막해서 멍때리기 때문&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;내가 지금 뭘 하려는지 명확히 안다는 사실을 동료와 소스코드로 공유하고 소통(코드 리뷰)한다.
+    &lt;ul&gt;
+      &lt;li&gt;as-is 1: 개발 계획을 별도의 문서로 공유함&lt;/li&gt;
+      &lt;li&gt;as-is 2: 개발 계획을 구현 코드로 공유함&lt;/li&gt;
+      &lt;li&gt;to-be: 개발 계획을 테스트 코드로 공유함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;최고의-효율로-테스트-개발을-하려면&quot;&gt;최고의 효율로 테스트 개발을 하려면&lt;/h2&gt;
+&lt;p&gt;TDD가 기존 개발 방식보다 효율적이기 위해서는!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;테스트 설계 흐름에 익숙해야 한다.
+    &lt;ul&gt;
+      &lt;li&gt;사람의 요구사항을 프로그램이 할 수 있는 기능으로 변환&lt;/li&gt;
+      &lt;li&gt;기능을 단위 기능으로 세분화&lt;/li&gt;
+      &lt;li&gt;기능의 관계와 상호작용을 설계하기&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;테스트 작성 기술에 익숙해야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;결론! 계속, 꾸준히 많이 동료와 함께 해야한다!&lt;/p&gt;
+
+&lt;h2 id=&quot;막연한-사람을-위한-가이드&quot;&gt;막연한 사람을 위한 가이드&lt;/h2&gt;
+&lt;h3 id=&quot;테스트-내용의-발전-과정&quot;&gt;테스트 내용의 발전 과정&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;메인 요구사항의 기본 목표 위주로 우선 테스트 작성
+    &lt;ul&gt;
+      &lt;li&gt;날짜를 yyyymmdd포맥으로 입력하면, 정산일(D+3)을 계산해준다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;메인 요구사항 기분 + 세부 목표를 테스트로 작성
+    &lt;ul&gt;
+      &lt;li&gt;날짜를 yyyymmdd포맷으로 입력하면, 정산일(D+3)을 계산해준다&lt;/li&gt;
+      &lt;li&gt;입력값이 없으면, 사용자에게 적절한 경고를 표시해준다.&lt;/li&gt;
+      &lt;li&gt;2000.01.01 이전 날짜 입력은, 최초 정산일(2000.01.01)을 출력해준다.&lt;/li&gt;
+      &lt;li&gt;매월 말일은, 빠른 정산일(D+2)을 계산해준다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;메인 요구사항 기본 + 세부 + 더욱 구체적인 기능적 고려요소
+    &lt;ul&gt;
+      &lt;li&gt;yyyy-mm-dd포맷으로 입력하면??&lt;/li&gt;
+      &lt;li&gt;null? “ “?? “”??&lt;/li&gt;
+      &lt;li&gt;매월 말일은 빠른 정산일(D+2)을 계산해준다.
+다양한 엣지케이스에 대한 테스트를 만든다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;</content><author><name>HeoYou</name></author><category term="[&quot;study&quot;]" /><category term="tdd" /><summary type="html">Intro</summary></entry><entry><title type="html">[Algorithm] Union-Find</title><link href="http://localhost:4000/algorithm/2022/04/28/algorithm-union-find.html" rel="alternate" type="text/html" title="[Algorithm] Union-Find" /><published>2022-04-28T00:00:00+09:00</published><updated>2022-04-28T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/2022/04/28/algorithm-union-find</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/04/28/algorithm-union-find.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 
 &lt;p&gt;유니온 파인드가 생각보다 많이 쓰이는걸 봤슴당.. 그래서 공부를 해야겠더라구요&lt;/p&gt;
 
@@ -604,5 +699,4 @@
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157008071-68bc92fd-f685-407d-bb81-05b7c6ff708d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;네트워크-계층별-역할&quot;&gt;네트워크 계층별 역할&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157009954-36454938-b05f-4363-a5fd-86ec49ddfeb7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Network" /><summary type="html">컴퓨터 네트워크와 인터넷 네트워크와 인터넷 네트워크 종단 시스템(end system): pc나 스마트폰처럼 네트워크 송수신 주체 프로토콜(protocol): 두 이종 시스템을 연결하기 위한 규약 통신을 목적으로 실제 물리적으로 선으로 연결되어 있거나 무선으로 연결</summary></entry><entry><title type="html">[Spring-Boot] Spring-Boot Properties</title><link href="http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties.html" rel="alternate" type="text/html" title="[Spring-Boot] Spring-Boot Properties" /><published>2022-02-22T00:00:00+09:00</published><updated>2022-02-22T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties</id><content type="html" xml:base="http://localhost:4000/spring%20boot/2022/02/22/spring-boot-properties.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;Spring boot properties&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Spring boot" /><category term="properties" /><summary type="html">Intro Spring boot properties</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157009954-36454938-b05f-4363-a5fd-86ec49ddfeb7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Network" /><summary type="html">컴퓨터 네트워크와 인터넷 네트워크와 인터넷 네트워크 종단 시스템(end system): pc나 스마트폰처럼 네트워크 송수신 주체 프로토콜(protocol): 두 이종 시스템을 연결하기 위한 규약 통신을 목적으로 실제 물리적으로 선으로 연결되어 있거나 무선으로 연결</summary></entry></feed>

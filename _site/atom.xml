@@ -1,4 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-10T23:25:53+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[TDD]Test Driven Development</title><link href="http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd).html" rel="alternate" type="text/html" title="[TDD]Test Driven Development" /><published>2022-05-09T00:00:00+09:00</published><updated>2022-05-09T00:00:00+09:00</updated><id>http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd)</id><content type="html" xml:base="http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd).html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-16T23:34:54+09:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">HeoYou You don’t know this?</title><subtitle></subtitle><author><name>HeoYou</name></author><entry><title type="html">[TDD]Test Driven Development</title><link href="http://localhost:4000/spring%20boot/spring%20framework/2022/05/16/spring-circular-dependencies.html" rel="alternate" type="text/html" title="[TDD]Test Driven Development" /><published>2022-05-16T00:00:00+09:00</published><updated>2022-05-16T00:00:00+09:00</updated><id>http://localhost:4000/spring%20boot/spring%20framework/2022/05/16/spring-circular-dependencies</id><content type="html" xml:base="http://localhost:4000/spring%20boot/spring%20framework/2022/05/16/spring-circular-dependencies.html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;친구가 스프링 시큐리티를 적용하면서 “The dependencies of some of the beans in the application context form a cycle” 오류가 발생했다고 나에게 물어봤다. 
+&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/168603912-d1ea45ce-05ad-44cb-9c0b-f8c253b5c45e.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그래서 검색을 해보았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;순환참조&quot;&gt;순환참조??&lt;/h2&gt;
+
+&lt;p&gt;순환참조란 A클래스가 B클래스의 Bean을 주입받고, B클래스가 A클래스의 Bean을 주입받는 상황이다. 
+서로 참조를 하면서 순환참조가 발생한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;왜&quot;&gt;왜??&lt;/h2&gt;
+
+&lt;p&gt;IoC컨테이너에 있는 Bean을 주입받기 위해서 세 가지 방법을 사용할 수 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;필드 주입방식&lt;/li&gt;
+  &lt;li&gt;Setter 주입방식&lt;/li&gt;
+  &lt;li&gt;생성자 주입방식&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;필드-setter-주입방식&quot;&gt;필드, Setter 주입방식&lt;/h3&gt;
+
+&lt;p&gt;필드 주입방식과 Setter주입방식에서는 애플리케이션 실행과정에서 예외가 발생하지 않는다. 그리고 실제 두개의 클래스가 순환참조하고 있다고 하더라도 당장에 문제가 발생하지 않는다. 문제점은 해당 메소드가 호출되었을 때이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Service&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServiceA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServiceB&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serviceB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    	&lt;span class=&quot;n&quot;&gt;serviceB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Service&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServiceB&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServiceA&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serviceA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    	&lt;span class=&quot;n&quot;&gt;serviceA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;필드-setter-주입방식-정리&quot;&gt;필드, Setter 주입방식 정리&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;스프링 애플리케이션 로딩 시 예외가 발생하지 않는다.&lt;/li&gt;
+  &lt;li&gt;단순 클래스가 순호나참조하는 것이 아니라 메소드가 순환호출 되어야하고, 해당 메소드가 호출되는 시점에 예외가 발생한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;생성자-주입방식&quot;&gt;생성자 주입방식&lt;/h3&gt;
+
+&lt;p&gt;스프링 애플리케이션은 로딩되는 시점에서 A클래스가 B클래스를 의존하고 B클래스가 C클래스를 의존한다면,
+A클래스를 만들 때 B클래스가 필요하니 B부터 생성하고 B를 생성하려면 C가 있어야 하니 C를 가장먼저 생성한다.&lt;/p&gt;
+
+&lt;p&gt;한마디로 C -&amp;gt; B -&amp;gt; A 순서대로 Bean을 생성한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;여기서 만약 A클래스와 B클래스가 서로 의존한 상태라면??&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A클래스, B클래스가 Bean을 생성할 때 서로 필요하게 되니까 무한 반복에 빠지게된다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 A클래스의 Bean을 만드는 과정에서 B클래스의 Bean을 주입하고, B클래스가 없으니까 Bean을 생성하면서 A클래스를 주입하려고 하는데 없어서 A클래스의 Bean을 생성하게 된다. 이렇게 무한 반복에 빠지게 되는 현상이다.&lt;/p&gt;
+
+&lt;h4 id=&quot;생성자-주입-방식-정리&quot;&gt;생성자 주입 방식 정리&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;클래스가 서로 의존성 주입을 통해 순환참조하고 있을 때 발생하는 문제&lt;/li&gt;
+  &lt;li&gt;스프링 애플리케이션 로딩시점에서 예외가 발생&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;해결방법&quot;&gt;해결방법&lt;/h2&gt;
+
+&lt;p&gt;순환참조문제가 발생할 수 있는 구조자체를 만들지 않는 것이 가장 좋다.!!&lt;/p&gt;
+
+&lt;p&gt;처음부터 순환의 고리를 끊어내야한다. 하지만 당장 순환을 끊을 수 없는 경우에는 @Lazy 어노테이션을 통해 임의로 해결할 수 있다.&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="[&quot;Spring boot&quot;, &quot;Spring Framework&quot;]" /><category term="Tip" /><category term="Circular dependencies" /><summary type="html">Intro</summary></entry><entry><title type="html">[TDD]Test Driven Development</title><link href="http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd).html" rel="alternate" type="text/html" title="[TDD]Test Driven Development" /><published>2022-05-09T00:00:00+09:00</published><updated>2022-05-09T00:00:00+09:00</updated><id>http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd)</id><content type="html" xml:base="http://localhost:4000/study/2022/05/09/study-test-driven-development(tdd).html">&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 
 &lt;p&gt;spring 강의를 듣는중에 TDD에 대한 설명이 나온다 정리해보자&lt;/p&gt;
 
@@ -210,6 +285,8 @@
 &lt;p&gt;아래 소스는 백준 11657 문제를 풀이한 내역이다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;INF&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1e9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readline&lt;/span&gt;
 
@@ -607,96 +684,4 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157459861-868fa6c9-4a22-44ab-9f9f-dda5cd265913.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Computer Architecture" /><summary type="html">컴퓨터의 기본 구조</summary></entry><entry><title type="html">[Network] Network_01 컴퓨터 네트워크와 인터넷</title><link href="http://localhost:4000/network/2022/03/07/network-01.html" rel="alternate" type="text/html" title="[Network] Network_01 컴퓨터 네트워크와 인터넷" /><published>2022-03-07T00:00:00+09:00</published><updated>2022-03-07T00:00:00+09:00</updated><id>http://localhost:4000/network/2022/03/07/network-01</id><content type="html" xml:base="http://localhost:4000/network/2022/03/07/network-01.html">&lt;h2 id=&quot;컴퓨터-네트워크와-인터넷&quot;&gt;컴퓨터 네트워크와 인터넷&lt;/h2&gt;
-&lt;h3 id=&quot;네트워크와-인터넷&quot;&gt;네트워크와 인터넷&lt;/h3&gt;
-&lt;h4 id=&quot;네트워크&quot;&gt;네트워크&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;종단 시스템(end system): pc나 스마트폰처럼 네트워크 송수신 주체&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;프로토콜(protocol)&lt;/strong&gt;: 두 이종 시스템을 연결하기 위한 규약&lt;/li&gt;
-  &lt;li&gt;통신을 목적으로 실제 물리적으로 선으로 연결되어 있거나 무선으로 연결&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;인터넷&quot;&gt;인터넷&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;회사 혹은 소규모의 네트워크에서 전세계 네트워크와 연결된 상태&lt;/li&gt;
-  &lt;li&gt;다양한 애플리케이션 서비스 제공&lt;/li&gt;
-  &lt;li&gt;종단 시스템은 보통 ISP(Internet Service Provider)에 의해 연결&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;osi-7계층-layer&quot;&gt;OSI 7계층 (Layer)&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;네트워크 구성요소를 7개의 계층으로 역할을 나눈 표준 모델&lt;/li&gt;
-  &lt;li&gt;각 계층별 역할을 통해 통신 규격(프로토콜)을 만족&lt;/li&gt;
-  &lt;li&gt;일부 하위계층은 하드웨어에서 구현되며 상위계층은 소프트웨어로 구현&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;tcpip-transmission-control-protocolinternet-protocol&quot;&gt;TCP/IP (Transmission Control Protocol/Internet Protocol)&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;OSI 7계층이 나오기전 널리 사용되던 사실상 표준 역할&lt;/li&gt;
-  &lt;li&gt;각 계층별 역할에 따라 나누어짐&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;그밖에-자주-사용되는-용어&quot;&gt;그밖에 자주 사용되는 용어&lt;/h3&gt;
-
-&lt;h4 id=&quot;ip-주소adress&quot;&gt;IP 주소(Adress)&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;통신 자료를 최종적으로 전달하기 위해 필요한 송/수신 위치정보&lt;/li&gt;
-  &lt;li&gt;보통 IPv4의 주소를 사용하며 주소 부족을 위해 IPv6가 개발됨&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;패킷-교환packet-switching&quot;&gt;패킷 교환(Packet Switching)&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;종단간에 전송되는 데이터를 패킷(Packet)이라는 단위로 전달&lt;/li&gt;
-  &lt;li&gt;패킷은 네트워크를 통해 일정한 순서없이 보내지며 어떤 경로를 통해 이동되는지는 네트워크의 상황에 따라 다름.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;통신을-위한-기본-동작&quot;&gt;통신을 위한 기본 동작&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;요청(Request)
-    &lt;ul&gt;
-      &lt;li&gt;전송하는 종단 장치에서 상대방에게 서비스 요청&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;인지(Indicate)
-    &lt;ul&gt;
-      &lt;li&gt;수신하는 장치에서 작업 요청(이벤트) 확인&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;응답(Response)
-    &lt;ul&gt;
-      &lt;li&gt;수신하는 장치에서 요청받은 작업에 대해 적절히 응답&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;확인(Confirm)
-    &lt;ul&gt;
-      &lt;li&gt;전송 측에서 응답 데이터를 최종적으로 확인&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;네트워크의-유형&quot;&gt;네트워크의 유형&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;LAN(Local Area Network)
-    &lt;ul&gt;
-      &lt;li&gt;일정 그룹의 지역 네트워크(집, 사무실, 학교 등)&lt;/li&gt;
-      &lt;li&gt;소규모로 묶이며 사설망 등을 구축해 연결&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;WAN(Wide Area Network)
-    &lt;ul&gt;
-      &lt;li&gt;.원거리 통신망으로 넓은 범위 연결(국가, 대륙 등)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;크기 유형
-    &lt;ul&gt;
-      &lt;li&gt;LAN &amp;lt; WAN &amp;lt; Internet&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;네트워크-토폴리지&quot;&gt;네트워크 토폴리지&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157008071-68bc92fd-f685-407d-bb81-05b7c6ff708d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;네트워크-계층별-역할&quot;&gt;네트워크 계층별 역할&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157009954-36454938-b05f-4363-a5fd-86ec49ddfeb7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Network" /><summary type="html">컴퓨터 네트워크와 인터넷 네트워크와 인터넷 네트워크 종단 시스템(end system): pc나 스마트폰처럼 네트워크 송수신 주체 프로토콜(protocol): 두 이종 시스템을 연결하기 위한 규약 통신을 목적으로 실제 물리적으로 선으로 연결되어 있거나 무선으로 연결</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/51642448/157459861-868fa6c9-4a22-44ab-9f9f-dda5cd265913.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>HeoYou</name></author><category term="Computer Architecture" /><summary type="html">컴퓨터의 기본 구조</summary></entry></feed>

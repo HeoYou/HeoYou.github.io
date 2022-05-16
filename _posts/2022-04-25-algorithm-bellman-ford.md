@@ -51,6 +51,8 @@ category:
 ```python
 import sys
 
+INF = int(1e9)
+
 input = sys.stdin.readline
 
 v, e = map(input().split())

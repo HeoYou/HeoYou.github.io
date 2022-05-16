@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[TDD]Test Driven Development"
+title: "[Spring] Circular dependencies(순환참조)"
 tags: 
   - Tip
   - Circular dependencies

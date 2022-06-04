@@ -2,6 +2,7 @@
 layout: post
 title: "[Algorithm] 피보나치 수(Fibonacci)"
 tags: 
+  - Fibonacci
   - Python
 categories:
   - Algorithm
